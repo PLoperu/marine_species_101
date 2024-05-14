@@ -15,4 +15,20 @@ service: () -> {
     sortMarineSpeciesByTimeOfCreation: () -> (vec record {id:text; updated_at:text; name:text; description:text; created_at:text; taxonomy:record {id:text; updated_at:text; taxon_class:text; order:text; created_at:text; genus:text; species:text; family:text; kingdom:text; phylum:text}}) query;
     updateMarineSpecie: (text, record {name:text; description:text}) -> (variant {Ok:record {id:text; updated_at:text; name:text; description:text; created_at:text; taxonomy:record {id:text; updated_at:text; taxon_class:text; order:text; created_at:text; genus:text; species:text; family:text; kingdom:text; phylum:text}}; Err:variant {PaymentFailed:text; InvalidPayload:text; NotFound:text; PaymentCompleted:text}});
     updateTaxonomy: (text, record {taxon_class:text; order:text; genus:text; species:text; family:text; kingdom:text; phylum:text}) -> (variant {Ok:record {id:text; updated_at:text; taxon_class:text; order:text; created_at:text; genus:text; species:text; family:text; kingdom:text; phylum:text}; Err:variant {PaymentFailed:text; InvalidPayload:text; NotFound:text; PaymentCompleted:text}});
+
+    // Function to update only the name of a marine species
+    updateMarineSpecieName: (text, text) -> (variant {Ok:record {id:text; updated_at:text; name:text; description:text; created_at:text; taxonomy:record {id:text; updated_at:text; taxon_class:text; order:text; created_at:text; genus:text; species:text; family:text; kingdom:text; phylum:text}}; Err:variant {PaymentFailed:text; InvalidPayload:text; NotFound:text; PaymentCompleted:text}});
+
+    // Function to update only the description of a marine species
+    updateMarineSpecieDescription: (text, text) -> (variant {Ok:record {id:text; updated_at:text; name:text; description:text; created_at:text; taxonomy:record {id:text; updated_at:text; taxon_class:text; order:text; created_at:text; genus:text; species:text; family:text; kingdom:text; phylum:text}}; Err:variant {PaymentFailed:text; InvalidPayload:text; NotFound:text; PaymentCompleted:text}});
+
+    // Function to search marine species by their name
+    searchMarineSpeciesByName: (text) -> (vec record {id:text; updated_at:text; name:text; description:text; created_at:text; taxonomy:record {id:text; updated_at:text; taxon_class:text; order:text; created_at:text; genus:text; species:text; family:text; kingdom:text; phylum:text}}) query;
+
+    // Function to search marine species by their genus
+    searchMarineSpeciesByGenus: (text) -> (vec record {id:text; updated_at:text; name:text; description:text; created_at:text; taxonomy:record {id:text; updated_at:text; taxon_class:text; order:text; created_at:text; genus:text; species:text; family:text; kingdom:text; phylum:text}}) query;
+
+    // Function to search taxonomies by class
+    searchTaxonomiesByClass: (text) -> (vec record {id:text; updated_at:text; taxon_class:text; order:text; created_at:text; genus:text; species:text; family:text; kingdom:text; phylum:text}) query;
+
 }
